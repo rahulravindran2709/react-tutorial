@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+
+<body>
+    
+    <div id="content"></div>
+    <script src="https://fb.me/react-15.0.2.js"></script>
+    <script src="https://fb.me/react-dom-15.0.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+    function getName(){
+        return "RaghavFromFn";
+    }
+    var dataFromServer = {name:'RahulFromJSON'};
+    </script>
+    <script type="text/babel">
+
+        var SampleProps = React.createClass({render:function(){ return (
+        <div><h1 className='mydivclass'> {this.props.fullname}</h1></div>); }}); 
+
+
+        var SamplePropsJSON = React.createClass({render:function(){ return (
+        <div><h1 className='mydivclass'> {this.props.jsondata.name}</h1></div>); }});
+
+
+        ReactDOM.render(
+        <div><SampleProps fullname="raghav"/><SampleProps fullname={2>3?'rahul':'rahul2'} /><SampleProps fullname={getName()}/><SamplePropsJSON jsondata={dataFromServer}/></div>, document.getElementById('content') );
+    </script>
+</body>
+
+</html>
