@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+
+<body>
+    
+    <div id="content"></div>
+    <script src="js/react-15.0.2.js"></script>
+    <script src="js/react-dom-15.0.2.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    var dataFromServer = [{id:1,name:'RahulFromJSON'},{id:2,name:'RahulFromJSON2'},{id:3,name:'RahulFromJSON3'}];
+    </script>
+    <script type="text/babel">
+        var SamplePropsJSONRest = React.createClass({
+		getInitialState: function() {
+		return {
+		list: []
+		
+		};
+		},
+        componentDidMount:function(){
+        	console.log('in cdm');
+			this.serverRequest = $.get(this.props.source, function (result) {
+			var lastGist = result[0];
+			this.setState({list:result});
+			}.bind(this));
+        },
+        componentWillUnmount: function() {
+    		this.serverRequest.abort();
+  		},
+        render:function(){ 
+
+        var listNodes = this.state.list.map(function(arrayElem){
+            return (<li key={arrayElem.id}>{arrayElem.name}</li>);
+        })
+        return (
+        <ul>{listNodes}</ul>); }});
+
+
+        ReactDOM.render(
+        <div><SamplePropsJSONRest source="/users" /></div>, document.getElementById('content') );
+    </script>
+</body>
+
+</html>
