@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+
+<body>
+    
+    <div id="content"></div>
+    <script src="js/react-15.0.2.js"></script>
+    <script src="js/react-dom-15.0.2.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+
+    var propObject = {name:'RahulFromJSON',age:20};
+    </script>
+    <script type="text/babel">
+        var SamplePropsSpread = React.createClass({render:function(){ return (
+        <div><h1 className='mydivclass'> {this.props.name}</h1><span>Age: {this.props.age}</span></div>); }});
+
+
+        ReactDOM.render(
+        <div><SamplePropsSpread {...propObject}/></div>, document.getElementById('content') );
+    </script>
+</body>
+
+</html>
