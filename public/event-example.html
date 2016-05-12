@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="content"></div>
+    <script src="js/react-15.0.2.js"></script>
+    <script src="js/react-dom-15.0.2.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+    <script type="text/babel">
+        var ListItem = React.createClass({ 
+        getInitialState: function() { 
+        return { isSelected: false }; },
+         handleClick: function() { 
+         this.setState({ isSelected: true }) },
+
+          render: function() { 
+          var isSelected = this.state.isSelected; 
+          var style = { 'backgroundColor': '' };
+           if (isSelected) { style = { 'backgroundColor': '#ccc' }; 
+           } return (
+        <li onClick={this.handleClick} style={style}>{this.props.content}</li>
+        ); } }); 
+
+
+        var EventIntro = React.createClass({ 
+         render: function() { return (
+        <div>
+            <ul>
+                <ListItem content="Component 1" />
+                <ListItem content="Component 2" />
+                <ListItem content="Component 3" />
+            </ul>
+        </div>
+        ); } }); 
+        ReactDOM.render(<EventIntro /> , document.getElementById('content'));
+    </script>
+</body>
+
+</html>
