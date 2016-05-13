@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+
+<body>
+    
+    <div id="content"></div>
+    <script src="js/react-15.0.2.js"></script>
+    <script src="js/react-dom-15.0.2.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/babel">
+        var ComponentLifecycleEx = React.createClass({
+
+        getInitialState:function(){
+            console.log('Get initial state is called');
+            return {name:'Rahul'
+            }
+        },
+        componentWillMount:function(){
+            console.log('Component will mount state value    '+this.state.name);
+            console.log('Component will mount node value     '+this.refs.main);
+        },
+        componentDidMount:function(){
+            console.log('Component did mount is called      '+this.refs.main.className);
+        },
+        componentWillUnmount:function(){
+            console.log('Unmounting');
+        },
+        render:function(){
+        console.log('Render is called');
+         return (
+        <h1 ref="main" className='mydivclass'> {this.state.name}</h1>); }}); 
+        
+
+        ReactDOM.render(
+        <div><ComponentLifecycleEx /></div>, document.getElementById('content') );
+        console.log('Between mounting and unmounting');
+        ReactDOM.unmountComponentAtNode(document.getElementById('content'))
+
+    </script>
+</body>
+
+</html>
