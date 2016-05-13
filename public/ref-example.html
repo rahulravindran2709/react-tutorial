@@ -19,12 +19,20 @@
     <script src="js/browser.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script type="text/babel">
-        var HelloWorld = React.createClass({render:function(){ return (
-        <h1 className='mydivclass'> my name</h1>); }});
+        var HelloWorld = React.createClass({
 
-         
+        componentDidMount:function(){
+            console.log('value of ref'+this.refs.myheading);
+        },
+        render:function(){ return (
+        <h1 ref="myheading" className='mydivclass'> my name</h1>); }
+
+
+        });
+
+
         ReactDOM.render(
-        <div><HelloWorld /></HelloWorld></div>, document.getElementById('content') );
+        <div><HelloWorld /></div>, document.getElementById('content') );
     </script>
 </body>
 
